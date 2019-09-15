@@ -7,7 +7,7 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		features = "src/test/resources/functionalTests",
 		glue = "stepDefinations" ,
-		plugin = { "pretty", "json:target/cucumber-reports/Cucumber.json" } ,
+		plugin = { "pretty", "junit:target/cucumber-reports/Cucumber.xml" } ,
 		monochrome = true
 		)
 public class TestRunner {
