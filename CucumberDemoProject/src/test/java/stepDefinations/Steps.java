@@ -10,19 +10,21 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import dataProvider.ConfigFileReader;
 import pageObjects.CheckoutPage;
 
 public class Steps {
 	WebDriver driver;
 	CheckoutPage loginPage;
+	ConfigFileReader cfileRead = new ConfigFileReader() ;
 	@Given("^User is in Toolsqa home page$")
 	public void user_is_in_Flipkart_home_page() throws Throwable {
-		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver_win32\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver",cfileRead.getDriverPath());
 	    driver= new ChromeDriver();
 	    driver.manage().window().maximize();
 	    driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 	     loginPage = new CheckoutPage(driver);
-	    driver.get("http://www.shop.demoqa.com");
+	    driver.get(cfileRead.getApplicationUrl());
 	}
 
 	
